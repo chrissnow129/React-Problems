@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700");
+@import "reset";
+
+body{
+  background-color: #DBFCFA;
+}
+
+  h2{
+    text-align: center;
+    font-size: 30px;
+  }
+
+  ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  li{
+    text-align: center;
+    width: 150px;
+    height: 50px;
+    margin: 0 auto;
+  }
+
+  li:hover{
+    background-color: rgb(251, 225, 229);
+    color: white;
+  }
+
+  .Menu{
+    height: 400px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    margin-left: 40px;
+    background-color: #ADF3F9;
+  }
+
+  .Reviews{
+    background-color: #ADF3F9;
+    width: 200px;
+    margin-left: 210px;
+    bottom: 200px;
+  }
+
+  h3{
+    text-align: center;
+  }
