@@ -1,11 +1,11 @@
 const todoList = [
 	{
 		title: 'Learn more about React',
-		completed: true
+		completed: false
 	},
 	{
 		title: 'Write a new Component',
-		completed: false
+		completed: true
 	},
 	{
 		title: 'Add some style',

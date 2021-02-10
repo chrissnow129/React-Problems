@@ -11,8 +11,6 @@ export default function App(props) {
 		completed: false
 	});
 
-	// const [completed, updateCompleted] = useState(false)
-
 	const handleChange = evt => {
 		updateToDo({
 			...toDo,
@@ -27,11 +25,6 @@ export default function App(props) {
 		// todoList.title = '';
 		console.log(todoList);
 		updateList([...todoList, toDo]);
-	};
-
-	const compToDo = evt => {
-		evt.preventDefault();
-		updateToDo((toDo.completed = true));
 	};
 
 	return (
@@ -58,13 +51,17 @@ export default function App(props) {
 				/>
 			</form>
 
-			<div className="bg-green-100 mt-28 ml-48 h-65 w-3/4 p-8 rounded-lg grid gap-5 grid-cols-4">
+			<div className="bg-green-100 mt-28 ml-48 h-65 w-3/4 p-8 rounded-lg grid gap-5 grid-cols-4 content-around">
 				{todoList.map(todo => {
 					return (
 						<div
 							onClick={evt => {
-								todo.completed = true;
+								evt.preventDefault();
+								updateList((todo.completed = true));
 							}}
+							style={
+								todo.completed ? { display: 'none' } : { display: 'block' }
+							}
 							className="
 							w-60 
 							h-23 
@@ -82,7 +79,7 @@ export default function App(props) {
 							hover:shadow-md"
 						>
 							<h2 className="text-xl font-bold">{todo.title}</h2> <br />
-							<p>{todo.completed == 'false' ? 'Completed' : 'Not Completed'}</p>
+							<p>{todo.completed == false ? 'Not Completed' : 'Completed'}</p>
 							<br />
 						</div>
 					);
