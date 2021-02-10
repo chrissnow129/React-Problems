@@ -1,12 +1,11 @@
-import { set } from 'mongoose';
-import React, { useEffect, useState, useRef } from 'react';
-
+import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 export default function App(props) {
 	const [blogs, setBlogs] = useState([]);
 	const titleInput = useRef(null);
 	const bodyInput = useRef(null);
-
 	useEffect(() => {
+		// Immediately Invoked Function Expression
 		(async () => {
 			try {
 				const response = await fetch('/api/blogs');
@@ -16,17 +15,17 @@ export default function App(props) {
 				console.error(error);
 			}
 		})();
-	});
+	}, []);
 
-	const handleSubmit = async evt => {
-		evt.preventDefault();
+	const handleSubmit = async e => {
+		e.preventDefault();
 		const titleValue = titleInput.current.value;
 		const bodyValue = bodyInput.current.value;
 		try {
-			const response = await fetch('api/blogs', {
+			const response = await fetch('/api/blogs', {
 				method: 'POST',
 				headers: {
-					'Content-type': 'application/json'
+					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify({
 					title: titleValue,
@@ -45,7 +44,9 @@ export default function App(props) {
 			{blogs.map(blog => {
 				return (
 					<div key={blog._id}>
-						<h1>{blog.title}</h1>
+						<h2>
+							<Link to={`/${blog._id}`}>{blog.title}</Link>
+						</h2>
 						<p>{blog.body}</p>
 					</div>
 				);

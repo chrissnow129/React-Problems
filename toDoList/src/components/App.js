@@ -6,11 +6,18 @@ export default function App(props) {
 	const [todoList, updateTodo] = useState(todoListx);
 	const bodyInput = useRef(null);
 
+	const handleChange = evt => {
+		updateTodo({
+			title: '',
+			completed: false
+		});
+	};
+
 	const handleSubmit = evt => {
 		evt.preventDefault();
 		const bodyValue = bodyInput.current.value;
-		todoList.completed = 'false';
-		todoList.title = '';
+		// todoList.completed = 'false';
+		// todoList.title = '';
 		console.log(todoList);
 		updateTodo([...todoList, bodyValue]);
 	};
@@ -20,7 +27,12 @@ export default function App(props) {
 			<form onSubmit={handleSubmit} className="flex flex-col mt-14">
 				<label>
 					What do you Need To Do? <br />
-					<input type="text" ref={bodyInput} className="bg-gray-100" />
+					<input
+						type="text"
+						onChange={handleChange}
+						ref={bodyInput}
+						className="bg-gray-100"
+					/>
 				</label>{' '}
 				<br />
 				<input
@@ -32,7 +44,7 @@ export default function App(props) {
 
 			<div className="bg-green-100 mt-40 h-65 w-25 p-8 flex items-center rounded-lg flex-wrap justify-between">
 				{Object.keys(todoList).length
-					? todoList.map(todo => {
+					? todoListx.map(todo => {
 							return (
 								<div
 									className="

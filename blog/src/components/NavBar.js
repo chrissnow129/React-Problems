@@ -6,11 +6,13 @@ const NavBar = props => {
 		<header className="test">
 			<h1>hello</h1>
 			<nav className="NavBar">
-				{props.routes.map(({ key, path }) => (
-					<Link key={key} to={path}>
-						{key}
-					</Link>
-				))}
+				{props.routes
+					.filter(item => !item.path.includes(':'))
+					.map(({ key, path }) => (
+						<Link key={key} to={path}>
+							{key}
+						</Link>
+					))}
 			</nav>
 		</header>
 	);
