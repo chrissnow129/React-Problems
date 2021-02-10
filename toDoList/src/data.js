@@ -10,6 +10,10 @@ const todoList = [
 	{
 		title: 'Add some style',
 		completed: false
+	},
+	{
+		title: 'Get better',
+		completed: false
 	}
 ];
 
