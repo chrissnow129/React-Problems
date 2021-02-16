@@ -7,7 +7,7 @@ export default function Rgb(props) {
 		rgb: '',
 		searchURL: ''
 	});
-	const [color, updtColor] = useState({});
+	const [rgbIn, updtRgb] = useState({});
 
 	const rgb = useRef(null);
 	// const b = useRef(null);
@@ -18,7 +18,7 @@ export default function Rgb(props) {
 			try {
 				const response = await fetch(query.searchURL);
 				const data = await response.json();
-				await updtColor(data);
+				await updtRgb(data);
 				console.log(data);
 			} catch (error) {
 				console.error(error);
@@ -45,7 +45,7 @@ export default function Rgb(props) {
 		<div>
 			<form className="flex flex-col" onSubmit={handleSubmit}>
 				<label>
-					R:{' '}
+					RGB Value:{' '}
 					<input
 						className="bg-gray-200"
 						type="text"
@@ -77,6 +77,17 @@ export default function Rgb(props) {
 				<br /> */}
 				<input className="w-32 h-9" type="submit" value="Get this Color" />
 			</form>
+			<div className="bg-green-200 grid gap-5">
+				{Object.keys(rgbIn).length
+					? rgbIn.map(rgb => {
+							return (
+								<div>
+									<img src={rgb.image.bare} />
+								</div>
+							);
+					  })
+					: ''}
+			</div>
 		</div>
 	);
 }

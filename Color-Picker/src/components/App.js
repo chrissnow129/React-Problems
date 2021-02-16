@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Rgb from './Rgb';
+import Header from './ColorHeader';
 import 'tailwindcss/tailwind.css';
 
 export default function App() {
@@ -28,47 +29,9 @@ export default function App() {
 		fetchColor();
 	}, []);
 
-	const r2 = Math.floor(Math.random() * 256);
-	const g2 = Math.floor(Math.random() * 256);
-	const b2 = Math.floor(Math.random() * 256);
-	const rgb2 = [r2, g2, b2].join(', ');
-
-	/////// RANDOM COLOR SCHEME ///////
-
-	const [scheme, setScheme] = useState();
-
-	const fetchScheme = async () => {
-		const r = Math.floor(Math.random() * 256);
-		const g = Math.floor(Math.random() * 256);
-		const b = Math.floor(Math.random() * 256);
-
-		try {
-			const response = await fetch(
-				`http://www.thecolorapi.com/scheme?rgb=${r},${g},${b}&mode=complement`
-			);
-			const data = await response.json();
-			console.log(data);
-			setColor(data);
-		} catch (error) {
-			console.error(error);
-		}
-	};
-
-	useEffect(() => {
-		fetchColor();
-	}, []);
-
 	return (
 		<div>
-			<header
-				style={{ backgroundColor: `rgb(${rgb2})` }}
-				className="mt-10 h-40 static"
-			>
-				<h1 className="text-center text-5xl text-white static">
-					Color Collection
-				</h1>
-			</header>
-
+			<Header />
 			{color ? (
 				<div
 					style={{
