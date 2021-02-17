@@ -11,7 +11,7 @@ export default function Header(props) {
 
 		try {
 			const response = await fetch(
-				`http://www.thecolorapi.com/scheme?rgb=${r},${g},${b}&mode=quad`
+				`http://www.thecolorapi.com/scheme?rgb=${r},${g},${b}&mode=triad`
 			);
 			const data = await response.json();
 			console.log(data);
@@ -25,6 +25,8 @@ export default function Header(props) {
 		fetchScheme();
 	}, []);
 
+	// setInterval(fetchScheme, 5000);
+
 	//OLD COLOR GEN. FOR HEADER
 	// const r2 = Math.floor(Math.random() * 256);
 	// const g2 = Math.floor(Math.random() * 256);
@@ -36,18 +38,15 @@ export default function Header(props) {
 			{scheme ? (
 				<header
 					style={{
-						background: `linear-gradient(90deg, 
-                            ${scheme.colors[0].rgb.value} 0%, 
-                            ${scheme.colors[1].rgb.value} 25%, 
-                            ${scheme.colors[2].rgb.value} 50%, 
-                            ${scheme.colors[3].rgb.value} 75%,
-                            ${scheme.colors[4].rgb.value} 100%)`
+						background: `linear-gradient(90deg,  
+                            ${scheme.colors[1].rgb.value} 33%, 
+                            ${scheme.colors[2].rgb.value} 66%, 
+                            ${scheme.colors[3].rgb.value} 100%)`
 					}}
-					className="mt-10 h-40 static"
+					className="mt-10 h-40 p-12"
+					onClick={fetchScheme}
 				>
-					<h1 className="text-center text-5xl text-white static">
-						Color Collection
-					</h1>
+					<h1 className="text-center text-5xl text-white">Color Collection</h1>
 				</header>
 			) : null}
 		</>

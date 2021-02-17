@@ -37,7 +37,7 @@ export default function App() {
 					style={{
 						backgroundColor: `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, 0.3)`
 					}}
-					className="flex flex-col justify-center m-auto mt-10 w-1/4 h-64 rounded-xl"
+					className="flex flex-col justify-center m-auto mt-10 w-1/4 h-64 rounded-xl shadow-md"
 				>
 					<h1 className="text-center text-xl pt-2 text-white">
 						Name: {color.name.value}
@@ -48,9 +48,12 @@ export default function App() {
 					<h3 className="text-center text-md text-white">
 						RGB Value: {color.rgb.r}, {color.rgb.g}, {color.rgb.b}
 					</h3>
-					<img className="m-auto rounded-3xl" src={color.image.bare} />
+					<img
+						className="m-auto rounded-3xl hover:shadow-xl hover:transition duration-300 ease-in-out"
+						src={color.image.bare}
+					/>
 					<button
-						className="m-auto mt-2 w-32 h-9 rounded-tl-2xl rounded-br-2xl text-white"
+						className="m-auto mt-2 w-32 h-9 rounded-tl-2xl rounded-br-2xl text-white hover:shadow-xl hover:transition duration-300 ease-in-out outline-none"
 						style={{ backgroundColor: `${color.hex.value}` }}
 						onClick={fetchColor}
 					>

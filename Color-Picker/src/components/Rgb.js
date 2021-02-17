@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
+import Colors from './Colors';
 
 export default function Rgb(props) {
 	const [query, updateQuery] = useState({
-		baseURL: 'http://www.thecolorapi.com/id?',
+		baseURL: 'http://www.thecolorapi.com/scheme?',
 		option: 'rgb=',
 		rgb: '',
 		searchURL: ''
@@ -77,17 +78,14 @@ export default function Rgb(props) {
 				<br /> */}
 				<input className="w-32 h-9" type="submit" value="Get this Color" />
 			</form>
-			<div className="bg-green-200 grid gap-5">
-				{Object.keys(rgbIn).length
-					? rgbIn.map(rgb => {
-							return (
-								<div>
-									<img src={rgb.image.bare} />
-								</div>
-							);
-					  })
-					: ''}
-			</div>
+			{rgbIn ? (
+				<div className="grid gap-5">
+					{Object.keys(rgbIn).length ? <Colors rgbIn={rgbIn} /> : ''}
+					{/* {for(color in rgbIn){
+						console.log(rgbIn)
+					}} */}
+				</div>
+			) : null}
 		</div>
 	);
 }
