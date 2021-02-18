@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Rgb from './Rgb';
-import Header from './ColorHeader';
+import Rgb from '../components/Rgb';
+import Header from '../components/ColorHeader';
 import 'tailwindcss/tailwind.css';
 
 export default function App() {

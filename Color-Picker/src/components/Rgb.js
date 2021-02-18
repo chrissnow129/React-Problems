@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Colors from './Colors';
 
 export default function Rgb(props) {
 	const [query, updateQuery] = useState({
-		baseURL: 'http://www.thecolorapi.com/scheme?',
+		baseURL: 'http://www.thecolorapi.com/id?',
 		option: 'rgb=',
 		rgb: '',
 		searchURL: ''
 	});
 	const [rgbIn, updtRgb] = useState({});
 
-	const rgb = useRef(null);
+	const [rgbLst, setRgbLst] = useState([]);
+
+	const rgbRef = useRef(null);
 	// const b = useRef(null);
 	// const g = useRef(null);
 
@@ -20,6 +21,7 @@ export default function Rgb(props) {
 				const response = await fetch(query.searchURL);
 				const data = await response.json();
 				await updtRgb(data);
+				await setRgbLst([...rgbLst, data]);
 				console.log(data);
 			} catch (error) {
 				console.error(error);
@@ -52,7 +54,7 @@ export default function Rgb(props) {
 						type="text"
 						onChange={handleChange}
 						value={query.rgb}
-						ref={rgb}
+						ref={rgbRef}
 					/>
 				</label>{' '}
 				<br />
@@ -79,8 +81,27 @@ export default function Rgb(props) {
 				<input className="w-32 h-9" type="submit" value="Get this Color" />
 			</form>
 			{rgbIn ? (
-				<div className="grid gap-5">
-					{Object.keys(rgbIn).length ? <Colors rgbIn={rgbIn} /> : ''}
+				<div className="grid gap-3 grid-cols-4">
+					{rgbLst.map(rgb2 => {
+						return (
+							<div>
+								<div
+									style={{
+										backgroundColor: `rgba(${rgb2.rgb.r}, ${rgb2.rgb.g}, ${rgb2.rgb.b}, 0.3)`
+									}}
+									className="flex flex-col justify-center mt-10 w-56 h-64 rounded-xl shadow-md"
+								>
+									<h1 className="text-center text-xl pt-2 text-white">
+										{rgb2.name.value}
+									</h1>
+									<img
+										className="m-auto rounded-3xl hover:shadow-xl hover:transition duration-300 ease-in-out"
+										src={rgb2.image.bare}
+									/>
+								</div>
+							</div>
+						);
+					})}
 					{/* {for(color in rgbIn){
 						console.log(rgbIn)
 					}} */}
