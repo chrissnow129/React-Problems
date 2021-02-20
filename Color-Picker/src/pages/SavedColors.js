@@ -31,7 +31,7 @@ export default function SavedColors(props) {
 								style={{
 									backgroundColor: `rgba(${rgbb.r}, ${rgbb.g}, ${rgbb.b}, 0.3)`
 								}}
-								className="flex flex-col justify-center mt-10 w-56 h-64 rounded-xl shadow-md"
+								className="flex flex-col justify-center mt-10 w-56 h-72 rounded-xl shadow-md text-white"
 							>
 								<h1 className="text-center text-xl pt-2">{rgbb.name}</h1>
 								<h2 className="text-center">
@@ -47,7 +47,7 @@ export default function SavedColors(props) {
 										style={{
 											backgroundColor: `rgba(${rgbb.r}, ${rgbb.g}, ${rgbb.b}, 0.2)`
 										}}
-										className="flex justify-center mt-2 w-32 h-9 rounded-tl-2xl rounded-br-2xl text-white hover:shadow-xl hover:transition duration-300 ease-in-out outline-none"
+										className="flex justify-center mt-2 m-auto w-32 h-9 rounded-tl-2xl rounded-br-2xl text-white hover:shadow-xl hover:transition duration-300 ease-in-out outline-none"
 									>
 										See More
 									</button>

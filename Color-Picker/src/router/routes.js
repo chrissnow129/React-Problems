@@ -6,7 +6,7 @@ import ColorShow from '../pages/ColorShow';
 const routes = [
 	{
 		Component: SavedColors,
-		key: 'SavedColors',
+		key: 'Saved Colors',
 		path: '/saved'
 	},
 	{
@@ -16,7 +16,7 @@ const routes = [
 	},
 	{
 		Component: App,
-		key: 'App',
+		key: 'Home',
 		path: '/'
 	}
 ];

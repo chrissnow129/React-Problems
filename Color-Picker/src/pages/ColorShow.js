@@ -41,7 +41,7 @@ export default function ColorShow(props) {
 						style={{
 							backgroundColor: `rgba(${color.r}, ${color.g}, ${color.b}, 0.3)`
 						}}
-						className="flex flex-col justify-center m-auto mt-10 w-1/4 h-64 rounded-xl shadow-md"
+						className="flex flex-col justify-center m-auto mt-10 w-1/4 h-64 rounded-xl shadow-md text-white"
 					>
 						<h1 className="text-center text-xl pt-2 text-white">
 							Name: {color.name}
@@ -51,6 +51,9 @@ export default function ColorShow(props) {
 						</h3>
 						<h3 className="text-center text-md text-white">
 							RGB Value: {color.r}, {color.g}, {color.b}
+						</h3>
+						<h3 className="text-center">
+							HSL Value: {color.h}, {color.s}, {color.l}
 						</h3>
 						<img
 							className="m-auto rounded-3xl hover:shadow-xl hover:transition duration-300 ease-in-out"

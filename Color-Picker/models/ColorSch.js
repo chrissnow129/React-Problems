@@ -7,7 +7,10 @@ const ColorSchema = new Schema({
 	value: String,
 	r: String,
 	g: String,
-	b: String
+	b: String,
+	h: String,
+	s: String,
+	l: String
 });
 
 const ColorSch = model('ColorSch', ColorSchema);

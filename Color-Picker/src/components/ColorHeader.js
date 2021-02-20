@@ -7,9 +7,9 @@ export default function Header(props) {
 	const [scheme, setScheme] = useState();
 
 	const fetchScheme = async () => {
-		const r = 255;
-		const g = 185 + Math.floor(Math.random() * 71);
-		const b = Math.floor(Math.random() * 256);
+		const r = 100 + Math.floor(Math.random() * 156);
+		const g = 100 + Math.floor(Math.random() * 156);
+		const b = 100 + Math.floor(Math.random() * 156);
 
 		try {
 			const response = await fetch(
@@ -49,18 +49,18 @@ export default function Header(props) {
 						className="mt-10 h-40 p-12"
 						onClick={fetchScheme}
 					>
-						<h1 className="text-center text-5xl text-white">
+						<h1 className="text-center text-5xl text-white font-extralight">
 							Color Collection
 						</h1>
 					</header>
 					<nav
 						style={{
 							background: `linear-gradient(90deg, 
-			rgba(${scheme.colors[1].rgb.r}, ${scheme.colors[1].rgb.g}, ${scheme.colors[1].rgb.b}, 0.6) 33%,
-			rgba(${scheme.colors[2].rgb.r}, ${scheme.colors[2].rgb.g}, ${scheme.colors[2].rgb.b}, 0.6) 66%,
-			rgba(${scheme.colors[3].rgb.r}, ${scheme.colors[3].rgb.g}, ${scheme.colors[3].rgb.b}, 0.6) 100%)`
+			rgba(${scheme.colors[1].rgb.r}, ${scheme.colors[1].rgb.g}, ${scheme.colors[1].rgb.b}, 0.8) 33%,
+			rgba(${scheme.colors[2].rgb.r}, ${scheme.colors[2].rgb.g}, ${scheme.colors[2].rgb.b}, 0.8) 66%,
+			rgba(${scheme.colors[3].rgb.r}, ${scheme.colors[3].rgb.g}, ${scheme.colors[3].rgb.b}, 0.8) 100%)`
 						}}
-						className="flex flex-row justify-around text-xl text-white h-10 p-2"
+						className="flex flex-row justify-around text-xl text-white text-light h-10 p-2"
 					>
 						{routes
 							.filter(item => !item.path.includes(':'))

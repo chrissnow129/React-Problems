@@ -54,7 +54,10 @@ export default function Rgb(props) {
 					name: newColor.name.value,
 					r: newColor.rgb.r,
 					g: newColor.rgb.g,
-					b: newColor.rgb.b
+					b: newColor.rgb.b,
+					h: newColor.hsl.h,
+					s: newColor.hsl.s,
+					l: newColor.hsl.l
 				})
 			});
 			const data = await response.json();
@@ -70,39 +73,28 @@ export default function Rgb(props) {
 	};
 	return (
 		<div>
-			<form className="flex flex-col" onSubmit={handleSubmit}>
-				<label>
-					RGB Value:{' '}
-					<input
-						className="bg-gray-200"
-						type="text"
-						onChange={handleChange}
-						value={query.rgb}
-						ref={rgbRef}
-					/>
-				</label>{' '}
+			<form
+				className="flex flex-col justify-center mt-5 m-auto text-white w-1/4 h-28 bg-green-100 rounded-xl shadow-md"
+				onSubmit={handleSubmit}
+			>
+				<div className="m-auto">
+					<label>
+						RGB Value:{' '}
+						<input
+							className="bg-green-200 mt-5"
+							type="text"
+							onChange={handleChange}
+							value={query.rgb}
+							ref={rgbRef}
+						/>
+					</label>{' '}
+				</div>
 				<br />
-				{/* <label>
-					G:{' '}
-					<input
-						className="bg-gray-200"
-						type="text"
-						onChange={handleChange}
-						ref={g}
-					/>
-				</label>{' '}
-				<br />
-				<label>
-					R:{' '}
-					<input
-						className="bg-gray-200"
-						type="text"
-						onChange={handleChange}
-						ref={b}
-					/>
-				</label>{' '}
-				<br /> */}
-				<input className="w-32 h-9" type="submit" value="Get this Color" />
+				<input
+					className="w-32 h-9 m-auto rounded-bl-2xl rounded-tr-2xl bg-green-200 hover:shadow-xl hover:transition duration-300 ease-in-out"
+					type="submit"
+					value="Get this Color"
+				/>
 			</form>
 			<div className="grid gap-3 grid-cols-4">
 				{rgbLst.map(rgb2 => {
