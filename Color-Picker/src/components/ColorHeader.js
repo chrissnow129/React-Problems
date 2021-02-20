@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import routes from '../router/routes.js';
 import 'tailwindcss/tailwind.css';
 
 export default function Header(props) {
 	const [scheme, setScheme] = useState();
 
 	const fetchScheme = async () => {
-		const r = Math.floor(Math.random() * 256);
-		const g = Math.floor(Math.random() * 256);
+		const r = 255;
+		const g = 185 + Math.floor(Math.random() * 71);
 		const b = Math.floor(Math.random() * 256);
 
 		try {
@@ -36,18 +38,39 @@ export default function Header(props) {
 	return (
 		<>
 			{scheme ? (
-				<header
-					style={{
-						background: `linear-gradient(90deg,  
+				<>
+					<header
+						style={{
+							background: `linear-gradient(90deg,  
                             ${scheme.colors[1].rgb.value} 33%, 
                             ${scheme.colors[2].rgb.value} 66%, 
                             ${scheme.colors[3].rgb.value} 100%)`
-					}}
-					className="mt-10 h-40 p-12"
-					onClick={fetchScheme}
-				>
-					<h1 className="text-center text-5xl text-white">Color Collection</h1>
-				</header>
+						}}
+						className="mt-10 h-40 p-12"
+						onClick={fetchScheme}
+					>
+						<h1 className="text-center text-5xl text-white">
+							Color Collection
+						</h1>
+					</header>
+					<nav
+						style={{
+							background: `linear-gradient(90deg, 
+			rgba(${scheme.colors[1].rgb.r}, ${scheme.colors[1].rgb.g}, ${scheme.colors[1].rgb.b}, 0.6) 33%,
+			rgba(${scheme.colors[2].rgb.r}, ${scheme.colors[2].rgb.g}, ${scheme.colors[2].rgb.b}, 0.6) 66%,
+			rgba(${scheme.colors[3].rgb.r}, ${scheme.colors[3].rgb.g}, ${scheme.colors[3].rgb.b}, 0.6) 100%)`
+						}}
+						className="flex flex-row justify-around text-xl text-white h-10 p-2"
+					>
+						{routes
+							.filter(item => !item.path.includes(':'))
+							.map(({ key, path }) => (
+								<Link key={key} to={path}>
+									{key}
+								</Link>
+							))}
+					</nav>
+				</>
 			) : null}
 		</>
 	);

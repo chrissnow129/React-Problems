@@ -1,10 +1,13 @@
 const { Schema, model } = require('mongoose');
 
 const ColorSchema = new Schema({
-	name: String,
-	rgb: String,
 	hex: String,
-	image: String
+	image: String,
+	name: String,
+	value: String,
+	r: String,
+	g: String,
+	b: String
 });
 
 const ColorSch = model('ColorSch', ColorSchema);
