@@ -42,6 +42,16 @@ export default function SavedColors(props) {
 									className="m-auto rounded-3xl hover:shadow-xl hover:transition duration-300 ease-in-out"
 									src={rgbb.image}
 								/>
+								<Link to={`/${rgbb._id}`}>
+									<button
+										style={{
+											backgroundColor: `rgba(${rgbb.r}, ${rgbb.g}, ${rgbb.b}, 0.2)`
+										}}
+										className="flex justify-center mt-2 w-32 h-9 rounded-tl-2xl rounded-br-2xl text-white hover:shadow-xl hover:transition duration-300 ease-in-out outline-none"
+									>
+										See More
+									</button>
+								</Link>
 							</div>
 						</div>
 					);
